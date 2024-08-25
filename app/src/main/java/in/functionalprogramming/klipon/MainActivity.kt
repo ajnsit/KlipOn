@@ -1,11 +1,10 @@
-package aj.aj.aj.klipon
+package `in`.functionalprogramming.klipon
 
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build.VERSION.SDK_INT
+import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.activity.enableEdgeToEdge
@@ -26,23 +25,23 @@ class MainActivity : AppCompatActivity() {
             } else -> {
                 enableEdgeToEdge()
                 setContentView(R.layout.activity_main)
-                ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-                    val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                    v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                    insets
-                }
+            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
+            }
             }
         }
     }
 
     private inline fun <reified T : Parcelable> getParcelable(intent: Intent, key: String): T? = when {
-        SDK_INT >= 33 -> intent.getParcelableExtra(key, T::class.java)
+        Build.VERSION.SDK_INT >= 33 -> intent.getParcelableExtra(key, T::class.java)
         else -> @Suppress("DEPRECATION") intent.getParcelableExtra(key) as? T
     }
 
     private fun handleSendImage(intent: Intent) {
         (getParcelable(intent, Intent.EXTRA_STREAM) as? Uri)?.let {
-            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clipData: ClipData = ClipData.newUri(contentResolver, "", it)
             clipboardManager.setPrimaryClip(clipData)
         }

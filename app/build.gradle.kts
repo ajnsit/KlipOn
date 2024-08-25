@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "aj.aj.aj.klipon"
+    namespace = "in.functionalprogramming.klipon"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "aj.aj.aj.klipon"
+        applicationId = "in.functionalprogramming.klipon"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
