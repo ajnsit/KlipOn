@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KlipOn</string>
+    <string name="helpBlurb">This is a single purpose teeny tiny app that allows you to copy any shareable image to the android clipboard. That\'s it. There is no associated UI - to use this app, simply share the image with this app from the share menu. The image will be copied to your clipboard and can be pasted into any other applications such as messaging apps, document editors, or social media platforms.</string>
 </resources>
